@@ -2,7 +2,7 @@ export const SAMPLE_DATASETS = [
   {
     name: 'Global Retail Sales 2025',
     originalFilename: 'sample_retail_sales_2025.csv',
-    description: '48 monthly transactions across North America, Europe, and APAC covering Electronics, Furniture, Software, and Accessories with revenue, cost, profit, units sold, and customer segments.',
+    description: '44 monthly transactions across North America, Europe, and APAC covering Electronics, Furniture, Software, and Accessories with revenue, cost, profit, units sold, and customer segments.',
     columns: ['order_date', 'month', 'quarter', 'region', 'category', 'product', 'segment', 'units_sold', 'revenue', 'cost', 'profit', 'discount_pct'],
     columnTypes: {
       order_date: 'TEXT',
@@ -78,7 +78,7 @@ export const SAMPLE_DATASETS = [
   {
     name: 'SaaS Growth & Marketing Funnel',
     originalFilename: 'sample_saas_marketing.csv',
-    description: '36 campaign & subscription performance rows tracking Monthly Recurring Revenue (MRR), Customer Acquisition Cost (CAC), churn rate, signups, and conversions across channels and plans.',
+    description: '30 campaign & subscription performance rows tracking Monthly Recurring Revenue (MRR), Customer Acquisition Cost (CAC), churn rate, signups, and conversions across channels and plans.',
     columns: ['month', 'channel', 'plan_tier', 'ad_spend', 'signups', 'paid_conversions', 'mrr_usd', 'cac_usd', 'churn_rate_pct', 'nps_score'],
     columnTypes: {
       month: 'TEXT',

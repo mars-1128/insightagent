@@ -54,47 +54,56 @@ function formatValue(val, format = 'number') {
 function SimpleInsightText({ text }) {
   if (!text) return null;
   const lines = text.split('\n');
+  const formatInline = (str) =>
+    str.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g).map((part, j) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <strong key={j} className="font-semibold text-slate-900 dark:text-white">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+        return (
+          <em key={j} className="italic text-slate-800 dark:text-slate-200">
+            {part.slice(1, -1)}
+          </em>
+        );
+      }
+      if (part.startsWith('`') && part.endsWith('`')) {
+        return (
+          <code
+            key={j}
+            className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-xs text-indigo-700 dark:bg-slate-800 dark:text-cyan-300"
+          >
+            {part.slice(1, -1)}
+          </code>
+        );
+      }
+      return part;
+    });
+
   return (
     <div className="space-y-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
       {lines.map((line, i) => {
         const trimmed = line.trim();
         if (!trimmed) return <div key={i} className="h-1" />;
-        const parts = trimmed.split(/(\*\*[^*]+\*\*|`[^`]+`)/g).map((part, j) => {
-          if (part.startsWith('**') && part.endsWith('**')) {
-            return (
-              <strong key={j} className="font-semibold text-slate-900 dark:text-white">
-                {part.slice(2, -2)}
-              </strong>
-            );
-          }
-          if (part.startsWith('`') && part.endsWith('`')) {
-            return (
-              <code
-                key={j}
-                className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-xs text-indigo-700 dark:bg-slate-800 dark:text-cyan-300"
-              >
-                {part.slice(1, -1)}
-              </code>
-            );
-          }
-          return part;
-        });
+        if (/^#{1,6}\s+/.test(trimmed)) {
+          return (
+            <h4 key={i} className="pt-2 text-sm font-bold text-slate-900 dark:text-white">
+              {formatInline(trimmed.replace(/^#{1,6}\s+/, ''))}
+            </h4>
+          );
+        }
         if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
           return (
             <div key={i} className="flex gap-2 pl-1">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
-              <span>{parts}</span>
+              <span>{formatInline(trimmed.slice(2))}</span>
             </div>
           );
         }
-        if (trimmed.startsWith('### ') || trimmed.startsWith('## ')) {
-          return (
-            <h4 key={i} className="pt-2 text-sm font-bold text-slate-900 dark:text-white">
-              {trimmed.replace(/^#+\s*/, '')}
-            </h4>
-          );
-        }
-        return <p key={i}>{parts}</p>;
+        return <p key={i}>{formatInline(trimmed)}</p>;
       })}
     </div>
   );

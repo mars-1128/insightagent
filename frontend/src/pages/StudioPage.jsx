@@ -267,8 +267,10 @@ export default function StudioPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Active Dataset:</span>
+              <label htmlFor="active-dataset-select" className="text-xs font-semibold text-slate-500 dark:text-slate-400">Active Dataset:</label>
               <select
+                id="active-dataset-select"
+                name="datasetId"
                 value={selectedDatasetId}
                 onChange={(e) => setSelectedDatasetId(e.target.value)}
                 className="rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-900 focus:border-indigo-500 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-white"
@@ -311,6 +313,9 @@ export default function StudioPage() {
 
           <form onSubmit={handleQuickAnalyze} className="flex flex-col sm:flex-row gap-2.5">
             <input
+              id="analytics-goal-input"
+              name="goal"
+              aria-label="Analytics goal or question"
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               placeholder="Ask a question (e.g., Compare revenue and profit by category, or ask an ambiguous question like 'Show me the best ones')..."
