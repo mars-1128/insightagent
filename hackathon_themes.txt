@@ -1,0 +1,220 @@
+﻿AI Agents Hackathon: Themes
+Common Requirements (Apply to Every Theme)
+Every theme below follows the same submission rules, tech stack, tools and deployment options. Each theme then adds its own scenario and theme-specific requirements.
+Submission Requirements
+Participants must submit the following:
+* Problem Statement: A brief description of the problem being addressed.
+* Solution Description: An overview of the proposed solution, including which agents were built, which tools they use, how AI is integrated, and the key features of the application.
+* GitHub Repository: A public GitHub repository containing the complete frontend and backend source code, along with a README explaining the project setup, execution steps, and a short diagram or description of the agent architecture.
+* Deployed Application Link: A publicly accessible deployment of the application.
+* Demo Video: A short video (3–5 minutes) demonstrating the application's features, the agent's plan, its tool calls, and the overall workflow.
+Assignment Tech Stack
+Frontend
+* React.js
+* Vite
+* React Router
+* Tailwind CSS, Material UI, Bootstrap, or another React UI framework
+* Axios or Fetch API
+* Or any other stack
+Backend
+* Node.js
+* Express.js
+* JSON Web Token (JWT) authentication
+* bcrypt for password hashing
+* Zod, Joi, or Express Validator
+* Or any other stack
+Database (Choose Any One)
+* MongoDB
+* Supabase PostgreSQL
+* SQLite
+* PostgreSQL
+* MySQL
+* Or any other database
+Artificial Intelligence
+* Google Gemini API
+* OpenAI API
+* Anthropic Claude API
+* Or any other API provider
+Agent Layer (Choose Any)
+* Native function calling / tool use of the chosen AI API
+* LangChain.js, LangGraph.js, Google ADK
+* A custom-built agent loop (plan, act, observe)
+* Or any other agent framework
+The AI API key must be stored only in backend environment variables.
+Tools to Use
+IDEs
+* Visual Studio Code
+* Cursor
+* Antigravity
+* Or any other IDE
+Version Control
+* Git
+* GitHub
+Recommended
+* Postman, Bruno, ReqBin for API testing
+Deployment
+Frontend
+* Vercel
+* Netlify
+* Or any other platform
+Backend
+* Render
+* Railway
+* Fly.io
+* Or any other platform
+Database
+* MongoDB Atlas
+* Supabase
+* Railway PostgreSQL
+* Neon
+* Or any other database
+Mandatory Agent Capabilities (Every Project)
+* The user gives a goal, and the agent produces a plan, executes it step by step, and returns a result.
+* The agent uses at least two real tools (for example an API, a database query, a search, a file reader or a calculator).
+* The UI shows a visible step-by-step trace of what the agent planned, which tool it called and what it observed.
+* The agent handles errors and uncertainty (retries, fallbacks, or asking the user).
+* Risky or irreversible actions need user approval before they run.
+________________
+
+
+Theme 1: Autonomous Task Agents
+Scenario-Based Challenge
+People and teams lose hours every week to multi-step tasks such as planning events, organizing schedules, preparing reports and coordinating follow-ups. Each task needs several small decisions and manual hand-offs between apps. Design an autonomous task agent that accepts a high-level goal, breaks it into sub-tasks, decides the order, executes each step with minimal human intervention and reports the outcome. Participants are encouraged to pick one specific kind of task, define the problem clearly and build an agent that finishes it end to end.
+Theme-Specific Requirements
+* Accept a goal in plain language and generate an editable task plan.
+* Execute steps in the right order and track the status of each step (pending, running, done, failed).
+* Replan automatically when a step fails or new information appears.
+* Save task history so users can review or rerun past goals.
+* Show a final summary of what was done and what still needs the user.
+________________
+
+
+Theme 2: Tool-Using & API Agents
+Scenario-Based Challenge
+Most useful work lives across many systems: calendars, spreadsheets, weather, maps, payments, email and internal databases. Workers switch between them manually to answer one question or finish one job. Design an agent that decides on its own which tools or APIs to call, in what order and with what inputs, then combines the results into a useful answer or action. Participants should choose a clear use case and show why the agent needs tools rather than only a language model.
+Theme-Specific Requirements
+* Integrate at least three tools or external APIs with clearly defined input and output schemas.
+* Let the model choose tools through function calling rather than hardcoded if/else logic.
+* Validate tool inputs and outputs with Zod, Joi or Express Validator.
+* Log every tool call (name, inputs, output, time taken) and show it in the UI.
+* Handle API failures, rate limits and empty results gracefully.
+________________
+
+
+Theme 3: Multi-Agent Collaboration
+Scenario-Based Challenge
+Complex work is rarely done by one person. It is split between specialists who research, draft, review and approve. A single AI prompt struggles to do all of this well. Design a multi-agent system in which several specialist agents with different roles and instructions collaborate, pass work to each other and produce one combined result. Participants should define each agent's role clearly and explain why splitting the work improves quality.
+Theme-Specific Requirements
+* Build at least three agents with distinct roles, such as planner, worker and reviewer.
+* Include an orchestrator or a clear hand-off mechanism between agents.
+* Show which agent produced which output in the UI.
+* Include a review or critique loop where one agent checks another agent's work.
+* Set a limit on the number of agent turns so the system cannot loop forever.
+________________
+
+
+Theme 4: Research & Knowledge Agents
+Scenario-Based Challenge
+Students, analysts and professionals spend a large part of their time searching, reading and comparing sources before they can make a decision or write anything. Information is scattered, repetitive and sometimes contradictory. Design a research agent that takes a question or topic, gathers information from several sources, compares and verifies it, and produces a structured, cited answer or report. Participants should focus on a specific audience, such as students, founders, researchers or journalists.
+Theme-Specific Requirements
+* Break a research question into sub-questions and search for each one.
+* Pull information from at least two kinds of sources (for example web search, uploaded documents or a knowledge base).
+* Cite sources for every important claim and flag conflicting information.
+* Produce a structured report with a summary, key findings and open questions.
+* Allow follow-up questions that build on the earlier research.
+________________
+
+
+Theme 5: Coding & DevOps Agents
+Scenario-Based Challenge
+Development teams spend a lot of time on repetitive engineering work: reviewing pull requests, writing tests, triaging bugs, updating documentation and understanding unfamiliar code. This slows down delivery and leads to inconsistent quality. Design an agent that reads code and repositories, reasons about them and takes useful actions such as suggesting fixes, generating tests, summarizing changes or classifying issues. Participants should pick one specific developer pain point and solve it well.
+Theme-Specific Requirements
+* Connect to a real code source, such as the GitHub API or uploaded files.
+* Analyze code and produce specific, actionable output (review comments, tests, issue labels or documentation).
+* Never run or merge changes automatically; require user approval for any write action.
+* Show the files and lines the agent used as evidence for each suggestion.
+* Keep the user's tokens and credentials safe on the backend only.
+________________
+
+
+Theme 6: Workflow & Business Automation Agents
+Scenario-Based Challenge
+Businesses run on repetitive processes: processing invoices, onboarding employees, qualifying leads, approving requests and updating records. These tasks involve many manual steps across tools, which causes delays, errors and inconsistent outcomes. Design an agent that automates one real business workflow from trigger to completion, makes routine decisions on its own and escalates exceptions to a human. Participants should define the workflow, the rules and the cases the agent must not decide alone.
+Theme-Specific Requirements
+* Model a real workflow with clear triggers, steps and outcomes.
+* Use structured AI output (JSON schema) to drive decisions and data entry.
+* Include role-based access (for example employee, manager, admin) using JWT.
+* Route low-confidence or high-risk cases to a human approval queue.
+* Provide a dashboard showing processed, pending and escalated items.
+________________
+
+
+Theme 7: Personal Assistant Agents
+Scenario-Based Challenge
+Generic AI assistants forget who the user is and give the same advice to everyone. People need assistants that remember their goals, habits and preferences and help them over weeks, not just in one chat. Design a personal agent that builds a profile of the user over time, plans actions for them and adapts its suggestions as things change. Participants could focus on areas such as study coaching, career guidance, fitness, finance habits or daily productivity.
+Theme-Specific Requirements
+* Store long-term memory about the user (goals, preferences, past progress) in the database.
+* Use that memory to personalize plans and responses.
+* Let users view, edit and delete what the agent remembers.
+* Support proactive suggestions, such as daily plans or reminders, not only replies to questions.
+* Track progress over time and adjust the plan based on it.
+________________
+
+
+Theme 8: Customer Support & Sales Agents
+Scenario-Based Challenge
+Support and sales teams handle large volumes of repeated questions about orders, accounts, products and policies. Customers wait too long, and agents spend their time on routine answers instead of complex cases. Design an agent that resolves customer queries by looking up real data, taking allowed actions and handing over to a human when it is unsure. Participants should choose a specific business type and define what the agent can and cannot do.
+Theme-Specific Requirements
+* Connect the agent to a data source such as orders, products, FAQs or policies stored in the database.
+* Allow safe actions through tools, such as checking status, creating a ticket or updating a record.
+* Detect when to escalate to a human and pass along a summary of the conversation.
+* Keep a conversation history and a ticket log for every customer.
+* Include an admin view with resolved, escalated and unresolved queries.
+________________
+
+
+Theme 9: Data & Analytics Agents
+Scenario-Based Challenge
+Most people who need insights from data cannot write SQL or build dashboards. They depend on analysts, which creates waiting time and missed decisions. Design an agent that lets a user ask questions in plain language, translates them into safe queries or calculations, runs them on a real dataset and explains the result with charts and plain-language insights. Participants should pick a domain such as sales, education, health records, agriculture or city data.
+Theme-Specific Requirements
+* Support a real dataset through upload (CSV) or a connected database.
+* Convert questions into queries or calculations and show the query used.
+* Allow read-only access so the agent can never change or delete data.
+* Display results with at least one chart or table and a written explanation.
+* Handle unclear questions by asking for clarification instead of guessing.
+________________
+
+
+Theme 10: Human-in-the-Loop & Safe Agents
+Scenario-Based Challenge
+Agents that act on their own can make costly mistakes, such as sending the wrong email, deleting data or approving a payment. Organizations will only trust agents that are transparent, controllable and auditable. Design an agent system built around trust: it explains what it plans to do, asks for approval before risky actions, records everything it does and can be stopped or corrected at any time. Participants should choose a domain where mistakes matter, such as finance, healthcare admin, HR or operations.
+Theme-Specific Requirements
+* Classify each planned action by risk level (low, medium, high).
+* Pause for explicit user approval before medium and high risk actions.
+* Keep a complete audit log of plans, approvals, rejections and actions.
+* Provide a stop button and a way to undo or correct an action where possible.
+* Add protections against prompt injection and unsafe tool use, and explain them in the README.
+________________
+
+
+Theme 11: Voice & Multimodal Agents
+Scenario-Based Challenge
+Not every user wants to type. People speak, take photos and share documents, and many tasks, such as scanning a bill, describing a crop problem or giving a spoken command, are easier through voice or images. Design an agent that accepts voice, images or documents as input, understands them, and then plans and takes action based on what it understood. Participants should focus on a specific user group and show why a multimodal input makes the experience better.
+Theme-Specific Requirements
+* Support at least one non-text input (voice, image or document upload).
+* Convert the input into structured data that the agent can act on.
+* Use at least two tools after the input is understood, such as a database lookup or an API call.
+* Show what the agent understood from the input so users can correct mistakes.
+* Provide a text fallback if voice or image recognition fails.
+________________
+
+
+Theme 12: Agents for Social Good
+Scenario-Based Challenge
+Many communities lack timely access to expert guidance in areas such as education, farming, healthcare access, accessibility, disaster response and civic services. Information exists, but it is hard to find, hard to understand and not available in local languages. Design an agent that helps real people with a real need by gathering information, reasoning about their situation and guiding them to clear next steps. Participants are encouraged to identify a specific community, understand their problem and build something they could realistically deploy.
+Theme-Specific Requirements
+* Define the target community and the exact problem in the problem statement.
+* Give guidance specific to the user's situation, not generic advice.
+* Support simple language, and ideally a local language, for the target users.
+* Include clear disclaimers and safe handling for sensitive topics such as health, legal or financial matters.
+* Explain the expected real-world impact and how it could be measured.
