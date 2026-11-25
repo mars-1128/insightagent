@@ -149,7 +149,7 @@ export default function LandingPage() {
                   Sign In
                 </Link>
                 <Link
-                  to="/login?mode=register"
+                  to="/signup"
                   className="aurora-btn flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold"
                 >
                   Launch Free
@@ -187,7 +187,7 @@ export default function LandingPage() {
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <button
-                onClick={() => navigate(user ? '/studio' : '/login?mode=register')}
+                onClick={() => navigate(user ? '/studio' : '/signup')}
                 className="aurora-btn flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold"
               >
                 <Play className="h-4 w-4 fill-current" />

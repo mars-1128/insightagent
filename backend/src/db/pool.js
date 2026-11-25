@@ -23,8 +23,42 @@ export async function initializeDatabase() {
       CREATE TABLE IF NOT EXISTS users (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         email VARCHAR(255) UNIQUE NOT NULL,
-        password_hash VARCHAR(255) NOT NULL,
+        password_hash VARCHAR(255),
         name VARCHAR(255) NOT NULL,
+        google_id VARCHAR(255) UNIQUE,
+        avatar_url TEXT,
+        auth_provider VARCHAR(30) DEFAULT 'local',
+        email_verified BOOLEAN DEFAULT FALSE,
+        token_version INTEGER DEFAULT 0,
+        created_at TIMESTAMPTZ DEFAULT NOW()
+      );
+    `);
+
+    // Forward-compatible auth migrations for existing users table
+    await client.query(`ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL`);
+    await client.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS google_id VARCHAR(255) UNIQUE`);
+    await client.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url TEXT`);
+    await client.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS auth_provider VARCHAR(30) DEFAULT 'local'`);
+    await client.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email_verified BOOLEAN DEFAULT FALSE`);
+    await client.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS token_version INTEGER DEFAULT 0`);
+    await client.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_lower_idx ON users (LOWER(email))`);
+
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS password_reset_tokens (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        token_hash VARCHAR(128) NOT NULL UNIQUE,
+        expires_at TIMESTAMPTZ NOT NULL,
+        used_at TIMESTAMPTZ,
+        created_at TIMESTAMPTZ DEFAULT NOW()
+      );
+    `);
+
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS oauth_exchange_codes (
+        code VARCHAR(128) PRIMARY KEY,
+        user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        expires_at TIMESTAMPTZ NOT NULL,
         created_at TIMESTAMPTZ DEFAULT NOW()
       );
     `);
@@ -45,7 +79,6 @@ export async function initializeDatabase() {
       );
     `);
 
-    // Safe forward-compatible migrations if datasets table already existed
     await client.query(`ALTER TABLE datasets ADD COLUMN IF NOT EXISTS description TEXT DEFAULT ''`);
     await client.query(`ALTER TABLE datasets ADD COLUMN IF NOT EXISTS is_sample BOOLEAN DEFAULT FALSE`);
 
@@ -75,7 +108,7 @@ export async function initializeDatabase() {
         dataset_name VARCHAR(255),
         goal TEXT NOT NULL,
         status VARCHAR(30) DEFAULT 'planned',
-        model VARCHAR(80) DEFAULT 'gemini-3.8-flash',
+        model VARCHAR(80) DEFAULT 'gemini-3.5-flash-lite',
         require_sql_approval BOOLEAN DEFAULT FALSE,
         plan JSONB DEFAULT '[]',
         trace JSONB DEFAULT '[]',

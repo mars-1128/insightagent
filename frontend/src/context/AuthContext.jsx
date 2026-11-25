@@ -39,30 +39,45 @@ export function AuthProvider({ children }) {
     return () => window.removeEventListener('auth:expired', handleExpired);
   }, []);
 
+  const persistSession = (data) => {
+    localStorage.setItem('insightagent_token', data.token);
+    localStorage.setItem('insightagent_user', JSON.stringify(data.user));
+    setUser(data.user);
+    return data;
+  };
+
   const login = async (email, password) => {
     const res = await api.post('/api/auth/login', { email, password });
-    localStorage.setItem('insightagent_token', res.data.token);
-    localStorage.setItem('insightagent_user', JSON.stringify(res.data.user));
-    setUser(res.data.user);
-    return res.data;
+    return persistSession(res.data);
   };
 
   const register = async (name, email, password) => {
     const res = await api.post('/api/auth/register', { name, email, password });
-    localStorage.setItem('insightagent_token', res.data.token);
-    localStorage.setItem('insightagent_user', JSON.stringify(res.data.user));
-    setUser(res.data.user);
-    return res.data;
+    return persistSession(res.data);
   };
 
-  const logout = () => {
-    localStorage.removeItem('insightagent_token');
-    localStorage.removeItem('insightagent_user');
-    setUser(null);
+  const exchangeGoogleCode = async (code) => {
+    const res = await api.post('/api/auth/google/exchange', { code });
+    return persistSession(res.data);
+  };
+
+  const logout = async () => {
+    try {
+      const token = localStorage.getItem('insightagent_token');
+      if (token) {
+        await api.post('/api/auth/logout');
+      }
+    } catch {
+      // Clear local session even if server request fails
+    } finally {
+      localStorage.removeItem('insightagent_token');
+      localStorage.removeItem('insightagent_user');
+      setUser(null);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, exchangeGoogleCode, logout }}>
       {children}
     </AuthContext.Provider>
   );

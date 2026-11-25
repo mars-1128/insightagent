@@ -17,6 +17,9 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust Render / reverse-proxy headers so req.protocol resolves https accurately for OAuth callbacks
+app.set('trust proxy', 1);
+
 mkdirSync(join(__dirname, '../uploads'), { recursive: true });
 
 // ── Middleware ──────────────────────────────────────────────
@@ -53,6 +56,13 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
+// Auth rate limit (brute-force protection)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 40,
+  message: { error: 'Too many authentication attempts. Please wait a few minutes and try again.' }
+});
+
 // AI agent rate limit
 const agentLimiter = rateLimit({
   windowMs: 60 * 1000,
@@ -61,6 +71,10 @@ const agentLimiter = rateLimit({
 });
 
 // ── Routes ──────────────────────────────────────────────────
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', authLimiter);
+app.use('/api/auth/forgot-password', authLimiter);
+app.use('/api/auth/reset-password', authLimiter);
 app.use('/api/auth', authRoutes);
 app.use('/api/datasets', datasetRoutes);
 app.use('/api/agent', agentLimiter, agentRoutes);

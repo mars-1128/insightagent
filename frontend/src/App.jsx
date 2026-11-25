@@ -5,6 +5,9 @@ import Layout from './components/Layout';
 import OpeningSplash from './components/OpeningSplash';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
+import GoogleCallbackPage from './pages/GoogleCallbackPage';
 import StudioPage from './pages/StudioPage';
 import DatasetsPage from './pages/DatasetsPage';
 import HistoryPage from './pages/HistoryPage';
@@ -46,7 +49,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomeRoute />} />
             <Route path="/welcome" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage defaultMode="login" />} />
+            <Route path="/signup" element={<LoginPage defaultMode="register" />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/auth/google/callback" element={<GoogleCallbackPage />} />
             <Route
               path="/studio"
               element={

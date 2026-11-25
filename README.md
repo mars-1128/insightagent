@@ -105,7 +105,11 @@ NODE_ENV=development
 JWT_SECRET=your_random_secret_key
 GEMINI_API_KEY=your_google_ai_studio_key
 DATABASE_URL=postgresql://postgres:ENCODED_PASSWORD@db.YOUR_REF.supabase.co:5432/postgres
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=http://localhost:5175
+GOOGLE_CLIENT_ID=your_google_oauth_client_id
+GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
+SMTP_USER=your_gmail_address
+SMTP_PASS=your_gmail_app_password
 ```
 *(Note: If deploying on an IPv4-only cloud host such as Render, use the Supabase **Session Pooler** connection string from Supabase Connect → Session Pooler.)*
 
