@@ -1,6 +1,10 @@
 # InsightAgent — Autonomous AI Data & Analytics Agent
 
 > **Hackathon Theme:** Theme 9 — Data & Analytics Agents ("Talk to your data like a colleague, not a database")
+>
+> 🌐 **Live App:** [https://insightagent-mauve.vercel.app](https://insightagent-mauve.vercel.app)  
+> ⚙️ **Backend Health:** [https://insightagent-backend-atne.onrender.com/health](https://insightagent-backend-atne.onrender.com/health)  
+> 📦 **Repository:** [https://github.com/mars-1128/insightagent](https://github.com/mars-1128/insightagent)
 
 InsightAgent lets non-technical users upload any CSV dataset (or load built-in business datasets) and ask analytical questions in plain English. Unlike a simple chatbot, InsightAgent executes a transparent **Plan → Edit → Tool Selection → Read-Only SQL → Statistics → Chart & Insights** workflow powered by Google Gemini's Interactions API and Supabase PostgreSQL.
 
