@@ -479,7 +479,9 @@ router.post('/forgot-password', async (req, res) => {
       return res.status(400).json({ error: error.errors[0].message });
     }
     console.error('Forgot password error:', error);
-    res.status(500).json({ error: 'Unable to send password reset email right now. Please try again.' });
+    res.status(error.status || 500).json({
+      error: error.message || 'Unable to send password reset email right now. Please try again.'
+    });
   }
 });
 
