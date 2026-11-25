@@ -225,16 +225,16 @@ export default function StudioPage() {
           <button
             onClick={handleSeedSamples}
             disabled={seedingSamples}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="glass-panel-subtle flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:border-indigo-400 dark:text-slate-200"
           >
-            {seedingSamples ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <PlusCircle className="h-3.5 w-3.5 text-indigo-500" />}
+            {seedingSamples ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <PlusCircle className="h-3.5 w-3.5 text-cyan-500" />}
             Load Sample Datasets
           </button>
           <button
             onClick={() => navigate('/datasets')}
-            className="flex items-center gap-1.5 rounded-xl bg-slate-900 px-3.5 py-2 text-xs font-semibold text-white hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700"
+            className="aurora-btn flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold"
           >
-            <Database className="h-3.5 w-3.5 text-cyan-400" />
+            <Database className="h-3.5 w-3.5" />
             Upload CSV
           </button>
         </div>
@@ -242,7 +242,7 @@ export default function StudioPage() {
 
       {/* Empty Dataset Onboarding */}
       {!loadingDatasets && datasets.length === 0 && (
-        <div className="rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="glass-panel border-indigo-500/35 bg-gradient-to-r from-indigo-500/15 via-violet-500/10 to-cyan-500/15 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               Welcome! Load a sample dataset or upload your own CSV to start
@@ -254,7 +254,7 @@ export default function StudioPage() {
           <button
             onClick={handleSeedSamples}
             disabled={seedingSamples}
-            className="shrink-0 flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500"
+            className="aurora-btn shrink-0 flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold"
           >
             {seedingSamples ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
             Load Demo Datasets Now
@@ -264,7 +264,7 @@ export default function StudioPage() {
 
       {/* Goal Input Card */}
       {datasets.length > 0 && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+        <div className="glass-panel p-5">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <div className="flex flex-wrap items-center gap-2.5">
               <label htmlFor="active-dataset-select" className="text-xs font-semibold text-slate-500 dark:text-slate-400">Active Dataset:</label>
@@ -273,7 +273,7 @@ export default function StudioPage() {
                 name="datasetId"
                 value={selectedDatasetId}
                 onChange={(e) => setSelectedDatasetId(e.target.value)}
-                className="rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-900 focus:border-indigo-500 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                className="glass-input px-3 py-1.5 text-xs font-semibold"
               >
                 {datasets.map((d) => (
                   <option key={d.id} value={d.id}>
@@ -286,7 +286,7 @@ export default function StudioPage() {
                 <button
                   type="button"
                   onClick={() => setShowSchema(!showSchema)}
-                  className="flex items-center gap-1 rounded-lg bg-slate-100 px-2.5 py-1.5 text-[11px] font-medium text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+                  className="glass-panel-subtle flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-medium text-slate-600 hover:border-indigo-400 dark:text-slate-300"
                 >
                   Schema ({activeDataset.columns?.length || 0} cols)
                   {showSchema ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
@@ -296,14 +296,14 @@ export default function StudioPage() {
           </div>
 
           {showSchema && activeDataset && (
-            <div className="mb-3 flex flex-wrap gap-1.5 rounded-xl bg-slate-100 p-3 dark:bg-slate-950">
+            <div className="mb-3 flex flex-wrap gap-1.5 glass-panel-subtle p-3">
               {(activeDataset.columns || []).map((col) => (
                 <span
                   key={col}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2 py-1 font-mono text-[11px] dark:border-slate-800 dark:bg-slate-900"
+                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200/80 bg-white/70 px-2 py-1 font-mono text-[11px] dark:border-white/10 dark:bg-slate-900/70"
                 >
                   <span className="font-semibold text-slate-800 dark:text-slate-200">{col}</span>
-                  <span className="text-[10px] text-indigo-500">
+                  <span className="text-[10px] text-cyan-600 dark:text-cyan-400">
                     {activeDataset.column_types?.[col] || 'TEXT'}
                   </span>
                 </span>
@@ -319,14 +319,14 @@ export default function StudioPage() {
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               placeholder="Ask a question (e.g., Compare revenue and profit by category, or ask an ambiguous question like 'Show me the best ones')..."
-              className="flex-1 rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+              className="glass-input flex-1 px-4 py-3 text-sm"
             />
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={handlePlanOnly}
                 disabled={busy || !goal.trim()}
-                className="flex items-center justify-center gap-1.5 rounded-xl border border-indigo-500/40 bg-indigo-500/10 px-4 py-3 text-xs font-semibold text-indigo-600 hover:bg-indigo-500/20 disabled:opacity-50 dark:text-indigo-300"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-indigo-500/40 bg-indigo-500/15 px-4 py-3 text-xs font-semibold text-indigo-700 backdrop-blur-md hover:bg-indigo-500/25 disabled:opacity-50 dark:text-indigo-300"
               >
                 <ListChecks className="h-4 w-4" />
                 Plan Only
@@ -334,7 +334,7 @@ export default function StudioPage() {
               <button
                 type="submit"
                 disabled={busy || !goal.trim()}
-                className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 px-5 py-3 text-xs font-semibold text-white shadow-md shadow-indigo-600/20 hover:from-indigo-500 hover:to-cyan-500 disabled:opacity-50"
+                className="aurora-btn flex items-center justify-center gap-1.5 rounded-xl px-5 py-3 text-xs font-semibold"
               >
                 {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
                 Analyze Now
@@ -350,7 +350,7 @@ export default function StudioPage() {
                 key={idx}
                 type="button"
                 onClick={() => setGoal(p.text)}
-                className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-700 hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:border-indigo-500 dark:hover:text-indigo-300"
+                className="glass-panel-subtle rounded-full px-3 py-1 text-[11px] font-medium text-slate-700 hover:border-cyan-400 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-cyan-300"
               >
                 {p.label}
               </button>

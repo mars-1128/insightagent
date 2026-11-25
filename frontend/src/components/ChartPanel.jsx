@@ -145,12 +145,12 @@ export default function ChartPanel({ result, onFollowUpClick }) {
 
   if (!result) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white/60 p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-500/10 text-indigo-500">
+      <div className="glass-panel border-dashed p-12 flex flex-col items-center justify-center text-center">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 text-indigo-500 dark:text-cyan-300">
           <BarChart3 className="h-7 w-7" />
         </div>
         <h3 className="mt-4 text-base font-semibold text-slate-900 dark:text-white">
-          Charts & Insights Will Appear Here
+          Charts &amp; Insights Will Appear Here
         </h3>
         <p className="mt-1.5 max-w-md text-sm text-slate-500 dark:text-slate-400">
           Ask a question in plain English above. The agent will inspect your schema, run safe read-only SQL on PostgreSQL, compute statistics, and render interactive charts.
@@ -213,7 +213,7 @@ export default function ChartPanel({ result, onFollowUpClick }) {
           {chart.kpis.map((kpi, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70"
+              className="glass-panel p-4"
             >
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{kpi.label}</p>
               <p className="mt-1 text-xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -231,7 +231,7 @@ export default function ChartPanel({ result, onFollowUpClick }) {
       )}
 
       {/* Visualization Card */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+      <div className="glass-panel p-5">
         <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -445,7 +445,7 @@ export default function ChartPanel({ result, onFollowUpClick }) {
 
       {/* Statistical Summary Strip */}
       {stats && !stats.error && (
-        <div className="rounded-2xl border border-cyan-500/20 bg-cyan-50/60 p-4 dark:bg-cyan-950/20">
+        <div className="glass-panel border-cyan-500/30 bg-cyan-500/10 p-4">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-700 dark:text-cyan-300 mb-2.5">
             <Sigma className="h-4 w-4" />
             Computed Statistics ({stats.metricLabel || stats.column})
@@ -459,7 +459,7 @@ export default function ChartPanel({ result, onFollowUpClick }) {
               { k: 'Std Dev', v: formatValue(stats.stdDev) },
               { k: 'Change', v: stats.firstToLastChangePct !== null ? `${stats.firstToLastChangePct}%` : '—' }
             ].map((item) => (
-              <div key={item.k} className="rounded-xl bg-white/80 px-3 py-2 dark:bg-slate-900/80">
+              <div key={item.k} className="glass-panel-subtle px-3 py-2">
                 <span className="block text-[11px] text-slate-500 dark:text-slate-400">{item.k}</span>
                 <span className="font-semibold text-slate-900 dark:text-white">{item.v}</span>
               </div>
@@ -470,9 +470,9 @@ export default function ChartPanel({ result, onFollowUpClick }) {
 
       {/* Written Insight Card */}
       {result.insight && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+        <div className="glass-panel p-5">
           <div className="flex items-center gap-2 mb-3">
-            <Sparkles className="h-4 w-4 text-indigo-500" />
+            <Sparkles className="h-4 w-4 text-cyan-500" />
             <h4 className="text-sm font-bold text-slate-900 dark:text-white">Executive Insights</h4>
           </div>
           <SimpleInsightText text={result.insight} />
@@ -481,8 +481,8 @@ export default function ChartPanel({ result, onFollowUpClick }) {
 
       {/* Read-Only SQL Inspector (Theme 9 Requirement #2) */}
       {result.sql && (
-        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+        <div className="glass-panel overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200/70 dark:border-white/10">
             <button
               onClick={() => setShowSql(!showSql)}
               className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200"

@@ -58,9 +58,9 @@ export default function SettingsPage() {
       </div>
 
       {/* System Health */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+      <div className="glass-panel p-5">
         <h2 className="text-sm font-bold mb-3 flex items-center gap-2">
-          <Settings className="h-4 w-4 text-indigo-500" />
+          <Settings className="h-4 w-4 text-cyan-500" />
           Backend &amp; Database Connectivity
         </h2>
         <div className="flex flex-wrap gap-4 text-xs">
@@ -84,7 +84,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Model Config */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 space-y-3">
+      <div className="glass-panel p-5 space-y-3">
         <h2 className="text-sm font-bold flex items-center gap-2">
           <Cpu className="h-4 w-4 text-cyan-500" />
           Preferred Gemini Model
@@ -95,7 +95,7 @@ export default function SettingsPage() {
         <select
           value={model}
           onChange={(e) => handleModelChange(e.target.value)}
-          className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950"
+          className="glass-input w-full px-3.5 py-2.5 text-xs font-semibold"
         >
           {MODELS.map((m) => (
             <option key={m.id} value={m.id}>
@@ -106,7 +106,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Human Approval Gate */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+      <div className="glass-panel p-5">
         <label className="flex items-start justify-between gap-4 cursor-pointer">
           <div>
             <h2 className="text-sm font-bold flex items-center gap-2">
@@ -127,7 +127,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Theme */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+      <div className="glass-panel p-5">
         <h2 className="text-sm font-bold mb-3">Interface Theme</h2>
         <div className="flex gap-3">
           <button

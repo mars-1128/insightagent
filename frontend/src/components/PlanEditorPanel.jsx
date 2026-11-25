@@ -90,7 +90,7 @@ export default function PlanEditorPanel({
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+    <div className="glass-panel p-4">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
         <div>
           <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -174,7 +174,7 @@ export default function PlanEditorPanel({
           return (
             <div
               key={step.id || idx}
-              className="rounded-xl border border-slate-200 bg-slate-50/60 p-2.5 dark:border-slate-800 dark:bg-slate-950/40"
+              className="glass-panel-subtle p-2.5"
             >
               {editing ? (
                 <div className="space-y-2">

@@ -42,7 +42,7 @@ function TraceItem({ item }) {
   const hasPayload = Boolean(item.input || item.output);
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-3 dark:border-slate-800 dark:bg-slate-900/60">
+    <div className="glass-panel-subtle p-3">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-start gap-2.5 min-w-0">
           <div className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border ${cfg.color}`}>
@@ -113,7 +113,7 @@ function TraceItem({ item }) {
 
 export default function AgentTracePanel({ trace = [], status }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+    <div className="glass-panel p-4">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <BrainCircuit className="h-4 w-4 text-indigo-500" />

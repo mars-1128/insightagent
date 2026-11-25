@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/Layout';
+import OpeningSplash from './components/OpeningSplash';
+import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import StudioPage from './pages/StudioPage';
 import DatasetsPage from './pages/DatasetsPage';
@@ -13,7 +15,7 @@ function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-300 text-sm">
+      <div className="glass-canvas flex items-center justify-center text-sm text-slate-500 dark:text-slate-300">
         Loading InsightAgent workspace...
       </div>
     );
@@ -22,15 +24,31 @@ function ProtectedRoute({ children }) {
   return <Layout>{children}</Layout>;
 }
 
+function HomeRoute() {
+  const { user, loading } = useAuth();
+  if (loading) {
+    return (
+      <div className="glass-canvas flex items-center justify-center text-sm text-slate-500 dark:text-slate-300">
+        Loading InsightAgent...
+      </div>
+    );
+  }
+  if (user) return <Navigate to="/studio" replace />;
+  return <LandingPage />;
+}
+
 export default function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
+        <OpeningSplash />
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<HomeRoute />} />
+            <Route path="/welcome" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
-              path="/"
+              path="/studio"
               element={
                 <ProtectedRoute>
                   <StudioPage />

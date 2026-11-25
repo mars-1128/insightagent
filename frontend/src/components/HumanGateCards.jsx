@@ -18,7 +18,7 @@ export function ApprovalCard({ pending, onApprove, onReject, busy }) {
   const isExport = pending.toolName === 'prepare_csv_export';
 
   return (
-    <div className="rounded-2xl border-2 border-amber-500/60 bg-amber-50/90 p-5 shadow-lg dark:bg-amber-950/30">
+    <div className="glass-panel border-2 border-amber-500/60 bg-amber-500/10 p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500 text-white">
@@ -119,7 +119,7 @@ export function ClarificationCard({ pending, onAnswer, busy }) {
   if (!pending || pending.type !== 'clarification') return null;
 
   return (
-    <div className="rounded-2xl border-2 border-cyan-500/60 bg-cyan-50/90 p-5 shadow-lg dark:bg-cyan-950/30">
+    <div className="glass-panel border-2 border-cyan-500/60 bg-cyan-500/10 p-5">
       <div className="flex items-start gap-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-600 text-white">
           <HelpCircle className="h-5 w-5" />

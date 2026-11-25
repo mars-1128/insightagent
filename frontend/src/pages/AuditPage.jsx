@@ -51,9 +51,9 @@ export default function AuditPage() {
         ].map((card, i) => (
           <div
             key={i}
-            className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70"
+            className="glass-panel p-4"
           >
-            <card.icon className="h-5 w-5 text-indigo-500 mb-2" />
+            <card.icon className="h-5 w-5 text-cyan-500 mb-2" />
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">{card.title}</h3>
             <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">{card.desc}</p>
           </div>
@@ -61,8 +61,8 @@ export default function AuditPage() {
       </div>
 
       {/* Audit Table */}
-      <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-        <div className="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
+      <div className="glass-panel overflow-hidden">
+        <div className="px-5 py-3.5 border-b border-slate-200/70 dark:border-white/10 flex items-center gap-2">
           <ShieldCheck className="h-4 w-4 text-emerald-500" />
           <h2 className="text-sm font-bold">Recent Security &amp; Agent Events</h2>
         </div>
