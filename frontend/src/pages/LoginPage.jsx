@@ -136,24 +136,26 @@ export default function LoginPage({ defaultMode = 'login' }) {
       </div>
 
       <div className="relative z-10 grid w-full max-w-5xl grid-cols-1 lg:grid-cols-2 overflow-hidden glass-panel animate-fade-up">
-        {/* Left Aurora Glass Pitch */}
-        <div className="hidden lg:flex flex-col justify-between bg-gradient-to-br from-indigo-600/20 via-violet-600/10 to-cyan-500/20 p-10 border-r border-slate-200/70 dark:border-white/10">
+        {/* Left Observatory Pitch */}
+        <div className="hidden lg:flex flex-col justify-between bg-gradient-to-br from-emerald-600/20 via-teal-600/10 to-cyan-500/20 p-10 border-r border-slate-200/70 dark:border-cyan-400/10">
           <div>
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:underline dark:text-cyan-300 mb-6"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 hover:underline dark:text-emerald-300 mb-6"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Back to Overview
             </Link>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-500 text-white shadow-lg shadow-indigo-500/30">
-                <Sparkles className="h-6 w-6" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/30">
+                <BarChart3 className="h-6 w-6 stroke-[2.3]" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-slate-900 dark:text-white">InsightAgent</h1>
-                <p className="text-xs text-indigo-600 dark:text-cyan-300">Autonomous Data &amp; Analytics Agent</p>
+                <h1 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                  Insight<span className="text-emerald-600 dark:text-emerald-400">Agent</span>
+                </h1>
+                <p className="font-mono text-[11px] text-teal-600 dark:text-cyan-300">Autonomous Data Observatory</p>
               </div>
             </div>
 

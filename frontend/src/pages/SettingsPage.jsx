@@ -134,23 +134,23 @@ export default function SettingsPage() {
             onClick={() => setTheme('dark')}
             className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold border ${
               theme === 'dark'
-                ? 'border-indigo-500 bg-indigo-500/15 text-indigo-400'
+                ? 'border-emerald-500 bg-emerald-500/15 text-emerald-400'
                 : 'border-slate-300 dark:border-slate-700'
             }`}
           >
             <Moon className="h-4 w-4" />
-            Dark Mode
+            Obsidian Dark
           </button>
           <button
             onClick={() => setTheme('light')}
             className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold border ${
               theme === 'light'
-                ? 'border-indigo-500 bg-indigo-500/15 text-indigo-600'
+                ? 'border-teal-500 bg-teal-500/15 text-teal-700'
                 : 'border-slate-300 dark:border-slate-700'
             }`}
           >
             <Sun className="h-4 w-4" />
-            Light Mode
+            Daylight Glass
           </button>
         </div>
       </div>

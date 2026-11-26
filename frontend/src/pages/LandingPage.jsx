@@ -109,16 +109,16 @@ export default function LandingPage() {
       <header className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5">
         <div className="glass-panel flex items-center justify-between px-5 py-3.5">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-500 text-white shadow-lg shadow-indigo-500/30">
-              <Sparkles className="h-5 w-5" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 shadow-lg shadow-emerald-500/30">
+              <BarChart3 className="h-5 w-5 stroke-[2.3]" />
             </div>
             <div>
-              <span className="block text-base font-extrabold tracking-tight text-slate-900 dark:text-white">
-                InsightAgent
+              <span className="block font-display text-base font-extrabold tracking-tight text-slate-900 dark:text-white">
+                Insight<span className="text-emerald-600 dark:text-emerald-400">Agent</span>
               </span>
-              <span className="flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="flex items-center gap-1.5 font-mono text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Autonomous AI Analytics Agent
+                Autonomous Data Observatory
               </span>
             </div>
           </div>
@@ -171,12 +171,12 @@ export default function LandingPage() {
               Powered by Google Gemini Interactions API &amp; PostgreSQL
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white">
-              Talk to Your Data Like a{' '}
-              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-400 bg-clip-text text-transparent">
-                Colleague
+            <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white">
+              Turn Raw Tables Into{' '}
+              <span className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-400 bg-clip-text text-transparent">
+                Live Visual Intelligence
               </span>
-              , Not a Database.
+              .
             </h1>
 
             <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">

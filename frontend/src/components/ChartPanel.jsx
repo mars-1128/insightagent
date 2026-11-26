@@ -34,7 +34,7 @@ import {
   Sigma
 } from 'lucide-react';
 
-const PALETTE = ['#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6'];
+const PALETTE = ['#10b981', '#06b6d4', '#f59e0b', '#3b82f6', '#14b8a6', '#ec4899', '#8b5cf6'];
 
 function formatValue(val, format = 'number') {
   if (val === null || val === undefined) return '—';
