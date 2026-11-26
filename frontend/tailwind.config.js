@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'monospace']
       },
       keyframes: {
@@ -24,7 +25,7 @@ export default {
       },
       animation: {
         'float-slow': 'floatSlow 8s ease-in-out infinite',
-        'fade-up': 'fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-up': 'fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-glow': 'pulseGlow 5s ease-in-out infinite'
       }
     }

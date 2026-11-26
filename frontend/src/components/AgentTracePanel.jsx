@@ -42,7 +42,7 @@ function TraceItem({ item }) {
   const hasPayload = Boolean(item.input || item.output);
 
   return (
-    <div className="glass-panel-subtle p-3">
+    <div className="glass-panel-subtle glass-hover p-3">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-start gap-2.5 min-w-0">
           <div className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border ${cfg.color}`}>

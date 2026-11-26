@@ -25,6 +25,7 @@ export default function HistoryPage() {
   const handleDelete = async (id) => {
     await api.delete(`/api/agent/runs/${id}`);
     setRuns((prev) => prev.filter((r) => r.id !== id));
+    window.dispatchEvent(new Event('insightagent:counts-changed'));
   };
 
   return (
@@ -53,7 +54,7 @@ export default function HistoryPage() {
           {runs.map((run) => (
             <div
               key={run.id}
-              className="glass-panel p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              className="glass-panel glass-hover p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">

@@ -51,7 +51,7 @@ export default function AuditPage() {
         ].map((card, i) => (
           <div
             key={i}
-            className="glass-panel p-4"
+            className="glass-panel glass-hover p-4"
           >
             <card.icon className="h-5 w-5 text-cyan-500 mb-2" />
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">{card.title}</h3>

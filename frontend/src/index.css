@@ -9,45 +9,65 @@
 }
 
 @layer components {
-  /* Full-screen Aurora Glass Canvas */
+  /* Full-screen Vibrant Cosmic / Pastel Aurora Canvas + subtle dot grid */
   .glass-canvas {
-    @apply relative min-h-screen overflow-x-hidden bg-slate-100 text-slate-900 dark:bg-[#050816] dark:text-slate-100;
+    @apply relative min-h-screen overflow-x-hidden text-slate-900 dark:text-slate-100 transition-colors duration-300;
+    background-color: #fbf7f4;
     background-image:
-      radial-gradient(circle at 12% 18%, rgba(99, 102, 241, 0.14), transparent 36%),
-      radial-gradient(circle at 86% 14%, rgba(6, 182, 212, 0.14), transparent 38%),
-      radial-gradient(circle at 74% 82%, rgba(16, 185, 129, 0.08), transparent 40%);
+      radial-gradient(circle at 15% 12%, rgba(251, 146, 60, 0.16), transparent 38%),
+      radial-gradient(circle at 85% 14%, rgba(168, 85, 247, 0.16), transparent 40%),
+      radial-gradient(circle at 50% 85%, rgba(56, 189, 248, 0.14), transparent 45%),
+      radial-gradient(rgba(100, 116, 139, 0.12) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
   }
 
   .dark .glass-canvas {
+    background-color: #080818;
     background-image:
-      radial-gradient(circle at 14% 16%, rgba(99, 102, 241, 0.24), transparent 38%),
-      radial-gradient(circle at 86% 18%, rgba(6, 182, 212, 0.2), transparent 40%),
-      radial-gradient(circle at 55% 88%, rgba(139, 92, 246, 0.16), transparent 44%);
+      radial-gradient(circle at 18% 15%, rgba(124, 58, 237, 0.28), transparent 42%),
+      radial-gradient(circle at 84% 16%, rgba(236, 72, 153, 0.18), transparent 40%),
+      radial-gradient(circle at 55% 88%, rgba(6, 182, 212, 0.16), transparent 45%),
+      radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
   }
 
-  /* Primary Frosted Glass Card */
+  /* Primary Frosted Glass Card with crisp hover elevation */
   .glass-panel {
-    @apply rounded-2xl border border-white/80 bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(15,23,42,0.07)] transition-all duration-200 dark:border-white/[0.11] dark:bg-slate-900/50 dark:shadow-[0_14px_45px_rgba(0,0,0,0.45)];
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.45), 0 10px 30px rgba(15, 23, 42, 0.06);
+    @apply rounded-2xl border border-slate-200/80 bg-white/85 backdrop-blur-xl transition-all duration-200 dark:border-white/[0.11] dark:bg-[#101026]/75;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.7),
+      0 10px 34px rgba(15, 23, 42, 0.07);
   }
 
   .dark .glass-panel {
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09), 0 16px 44px rgba(0, 0, 0, 0.48);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.09),
+      0 18px 46px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Interactive hover lift & luminous border */
+  .glass-hover {
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-violet-400/60 hover:shadow-[0_12px_32px_rgba(124,58,237,0.16)] dark:hover:border-violet-400/50 dark:hover:shadow-[0_14px_36px_rgba(139,92,246,0.22)];
   }
 
   /* Nested Frosted Glass Card */
   .glass-panel-subtle {
-    @apply rounded-xl border border-slate-200/80 bg-white/55 backdrop-blur-md dark:border-white/[0.08] dark:bg-slate-950/45;
+    @apply rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-md transition-all duration-200 dark:border-white/[0.09] dark:bg-[#0a0b1d]/65;
   }
 
   /* Frosted Input Control */
   .glass-input {
-    @apply rounded-xl border border-slate-300/80 bg-white/75 backdrop-blur-md text-slate-900 placeholder-slate-400 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/25 dark:border-white/15 dark:bg-slate-950/55 dark:text-white dark:placeholder-slate-500 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/20;
+    @apply rounded-xl border border-slate-300/85 bg-white/90 backdrop-blur-md text-slate-900 placeholder-slate-400 transition-all duration-200 hover:border-violet-400/60 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/25 dark:border-white/15 dark:bg-[#0b0c1e]/85 dark:text-white dark:placeholder-slate-500 dark:hover:border-violet-400/50 dark:focus:border-cyan-400 dark:focus:ring-violet-500/25;
   }
 
-  /* Luminous Aurora CTA Button */
+  /* Signature Vibrant Violet-to-Cyan/Pink Gradient Pill CTA */
   .aurora-btn {
-    @apply bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/25 transition-all hover:brightness-110 active:scale-[0.99] disabled:opacity-50;
+    @apply bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 text-white shadow-lg shadow-purple-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-xl hover:shadow-purple-500/35 active:translate-y-0 disabled:opacity-50 disabled:hover:translate-y-0;
+  }
+
+  /* Interactive Prompt / Tool Chip */
+  .prompt-chip {
+    @apply rounded-full border border-slate-200/90 bg-white/80 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-violet-400 hover:bg-violet-50 hover:text-violet-700 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300 dark:hover:border-violet-400/60 dark:hover:bg-violet-500/15 dark:hover:text-white;
   }
 }
 

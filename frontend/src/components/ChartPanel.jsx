@@ -213,7 +213,7 @@ export default function ChartPanel({ result, onFollowUpClick }) {
           {chart.kpis.map((kpi, idx) => (
             <div
               key={idx}
-              className="glass-panel p-4"
+              className="glass-panel glass-hover p-4"
             >
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{kpi.label}</p>
               <p className="mt-1 text-xl font-bold tracking-tight text-slate-900 dark:text-white">

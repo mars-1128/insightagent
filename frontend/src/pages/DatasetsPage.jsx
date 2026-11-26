@@ -59,6 +59,7 @@ export default function DatasetsPage() {
       setSelectedFile(null);
       setDatasetName('');
       setSuccess('CSV uploaded and indexed into PostgreSQL!');
+      window.dispatchEvent(new Event('insightagent:counts-changed'));
       await fetchDatasets();
     } catch (err) {
       setError(err.response?.data?.error || 'CSV upload failed.');
@@ -75,6 +76,7 @@ export default function DatasetsPage() {
       const res = await api.post('/api/datasets/seed-samples');
       setDatasets(res.data.datasets || []);
       setSuccess(res.data.message);
+      window.dispatchEvent(new Event('insightagent:counts-changed'));
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to seed sample datasets.');
     } finally {
@@ -96,6 +98,7 @@ export default function DatasetsPage() {
     try {
       await api.delete(`/api/datasets/${id}`);
       if (previewData?.id === id) setPreviewData(null);
+      window.dispatchEvent(new Event('insightagent:counts-changed'));
       await fetchDatasets();
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to delete dataset.');
@@ -185,7 +188,7 @@ export default function DatasetsPage() {
           {datasets.map((ds) => (
             <div
               key={ds.id}
-              className="glass-panel p-5 flex flex-col justify-between"
+              className="glass-panel glass-hover p-5 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2">
